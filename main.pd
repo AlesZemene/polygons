@@ -1,65 +1,102 @@
-#N canvas 528 65 786 408 10;
+#N canvas 574 79 1064 740 10;
 #X obj -207 -190 cnv 15 260 111 empty empty empty 20 12 0 14 -195568
 -66577 0;
-#N canvas 124 1576 450 300 gemwin 0;
+#N canvas 573 229 902 490 gemwin 0;
 #X obj 132 136 gemwin;
-#X obj 67 89 outlet;
-#X obj 67 10 inlet;
-#X obj 67 41 route create;
-#X msg 67 70 set destroy;
-#X msg 142 68 set create;
+#X obj 66 111 outlet;
+#X obj 66 -43 inlet;
+#X obj 66 -12 route create;
+#X msg 66 30 set destroy;
 #X msg 198 112 destroy;
 #X msg 132 112 create \, 1;
-#X obj 179 15 inlet;
+#X obj 178 -38 inlet;
+#X obj 116 -160 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X floatatom 116 -109 5 0 0 0 - - -;
+#X msg 116 -88 reset \, fullscreen \$1 \, create \, 1;
+#X text 138 -163 deactivate fullscreen;
+#X text 137 -146 fullscreen on screen 1;
+#X text 137 -130 fullscreen on screen 2;
+#X msg 454 -70 0;
+#X msg 485 -70 2;
+#X msg 514 -70 4;
+#X text 460 -163 2 - double resolution (4 times the pixel data);
+#X text 460 -103 8 - eight-times resolution (64 times the pixel data)
+;
+#X text 460 -143 4 - quadruple resolution (16 times the pixel data)
+;
+#X text 460 -183 0 - turn off super sampling for anti-aliasing;
+#X text 606 -72 <-- destroy gemwin between clicking these;
+#X text 460 -124 5 - quadruple resolution (16 times the pixel data)
+;
+#X msg 575 -70 8;
+#X msg 545 -70 5;
+#X msg 496 -20 destroy \, FSAA \$1 \, create \, 1;
+#X msg 342 83 cursor 0;
+#X msg 365 108 border 0;
+#X msg 396 131 topmost 1;
+#X msg 149 30 set create;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
-#X connect 3 0 7 0;
+#X connect 3 0 6 0;
+#X connect 3 1 29 0;
 #X connect 3 1 5 0;
-#X connect 3 1 6 0;
 #X connect 4 0 1 0;
-#X connect 5 0 1 0;
+#X connect 5 0 0 0;
 #X connect 6 0 0 0;
 #X connect 7 0 0 0;
-#X connect 8 0 0 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 0 0;
+#X connect 14 0 25 0;
+#X connect 15 0 25 0;
+#X connect 16 0 25 0;
+#X connect 23 0 25 0;
+#X connect 24 0 25 0;
+#X connect 25 0 0 0;
+#X connect 26 0 0 0;
+#X connect 27 0 0 0;
+#X connect 28 0 0 0;
+#X connect 29 0 1 0;
 #X restore -201 -152 pd gemwin;
 #X msg -201 -171 destroy;
-#X obj -57 -52 loadbang;
-#X obj -57 -27 s bang;
-#X obj -80 -51 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj -172 53 s slices;
-#X floatatom -172 25 5 0 0 0 - - -;
-#X obj -42 112 /;
-#X obj -68 69 t b f;
-#X obj -22 41 t b;
-#X msg -27 69 360;
-#X text 165 149 ( square root (slices / 2) / 2);
-#X text 167 129 diagonal square = a × sqrt / 2;
-#X msg 309 -107 draw line;
-#X obj 338 -65 gemhead;
-#X obj 309 17 circle 3;
-#X obj 337 -84 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X text 169 167 Length of the side of the polygon: a = 2 * r * sin
-(PI / n);
-#X obj -40 155 / 2;
-#X obj -8 151 s one;
-#X obj -2 170 s two;
-#X obj -42 136 +;
-#X floatatom -140 25 5 0 0 0 - - -;
-#X text -96 23 <== slices;
-#X obj -172 -24 metro 11;
-#X obj -172 -75 t b;
-#X msg -204 -27 0;
-#X obj -172 1 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj -14 24 loadbang;
+#X obj -14 49 s bang;
+#X obj -37 25 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X msg 254 -72 updown;
-#X floatatom 183 9 5 0 0 0 - - -;
-#X floatatom 211 -122 5 0 0 0 - - -;
-#X obj 183 -122 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
-#X obj 216 -36 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj -129 129 s slices;
+#X floatatom -129 101 5 0 0 0 - - -;
+#X obj 1 188 /;
+#X obj -25 145 t b f;
+#X obj 21 117 t b;
+#X msg 16 145 360;
+#X text 208 225 ( square root (slices / 2) / 2);
+#X text 210 205 diagonal square = a × sqrt / 2;
+#X msg 352 -31 draw line;
+#X obj 381 11 gemhead;
+#X obj 352 93 circle 3;
+#X obj 380 -8 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 212 243 Length of the side of the polygon: a = 2 * r * sin
+(PI / n);
+#X obj 3 231 / 2;
+#X obj 35 227 s one;
+#X obj 41 246 s two;
+#X obj 1 212 +;
+#X floatatom -97 101 5 0 0 0 - - -;
+#X text -53 99 <== slices;
+#X obj -129 52 metro 11;
+#X obj -129 1 t b;
+#X msg -161 49 0;
+#X obj -129 77 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
+#X msg 297 4 updown;
+#X floatatom 226 85 5 0 0 0 - - -;
+#X floatatom 254 -46 5 0 0 0 - - -;
+#X obj 226 -46 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 259 40 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
 #N canvas 592 1024 450 300 meter 0;
 #X floatatom 128 266 0 0 0 0 - - -;
 #X obj 128 178 cputime;
@@ -137,9 +174,9 @@
 #X obj 1118 219 r two;
 #X obj 1130 242 r one;
 #X obj 1143 266 r two;
+#X obj 81 73 mnoho2 3;
 #X obj 541 73 mnoho2 3;
 #X obj 1098 290 mnoho2 3;
-#X obj 81 73 mnoho2 3;
 #X obj 94 97 mnoho2 3;
 #X obj 107 122 mnoho2 3;
 #X obj 120 146 mnoho2 3;
@@ -187,9 +224,9 @@
 #X obj 1060 219 mnoho2 3;
 #X obj 1073 243 mnoho2 3;
 #X obj 1085 266 mnoho2 3;
-#X connect 0 0 53 1;
+#X connect 0 0 51 1;
 #X connect 1 0 54 1;
-#X connect 2 0 53 0;
+#X connect 2 0 51 0;
 #X connect 3 0 55 1;
 #X connect 4 0 56 1;
 #X connect 5 0 57 1;
@@ -208,7 +245,7 @@
 #X connect 18 0 70 1;
 #X connect 19 0 71 1;
 #X connect 20 0 72 1;
-#X connect 21 0 51 1;
+#X connect 21 0 52 1;
 #X connect 22 0 73 1;
 #X connect 23 0 74 1;
 #X connect 24 0 75 1;
@@ -237,9 +274,9 @@
 #X connect 47 0 98 1;
 #X connect 48 0 99 1;
 #X connect 49 0 100 1;
-#X connect 50 0 52 1;
-#X connect 51 0 73 0;
-#X connect 53 0 54 0;
+#X connect 50 0 53 1;
+#X connect 51 0 54 0;
+#X connect 52 0 73 0;
 #X connect 54 0 55 0;
 #X connect 55 0 56 0;
 #X connect 56 0 57 0;
@@ -258,7 +295,7 @@
 #X connect 69 0 70 0;
 #X connect 70 0 71 0;
 #X connect 71 0 72 0;
-#X connect 72 0 51 0;
+#X connect 72 0 52 0;
 #X connect 73 0 74 0;
 #X connect 74 0 75 0;
 #X connect 75 0 76 0;
@@ -286,32 +323,32 @@
 #X connect 97 0 98 0;
 #X connect 98 0 99 0;
 #X connect 99 0 100 0;
-#X connect 100 0 52 0;
-#X restore 13 120 pd pool;
-#X obj 183 -100 metro 500;
+#X connect 100 0 53 0;
+#X restore 56 196 pd pool;
+#X obj 226 -24 metro 500;
 #X msg -135 -174 dimen 1024 768 \, create \, 1;
 #X obj -49 -105 s x;
 #X obj -9 -105 s y;
 #X floatatom -49 -125 5 0 0 0 - - -;
 #X floatatom -9 -125 5 0 0 0 - - -;
-#X obj 338 -21 translateXYZ;
-#X obj 361 -43 r x;
-#X obj 393 -42 r y;
-#X obj -204 -49 del 111;
-#X msg 13 65 3;
-#X obj 241 -37 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 183 -14 counter 3 55;
+#X obj 381 55 translateXYZ;
+#X obj 404 33 r x;
+#X obj 436 34 r y;
+#X obj -161 27 del 111;
+#X msg 56 141 3;
+#X obj 284 39 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 226 62 counter 3 55;
 #X msg -134 -150 reset;
-#X obj 13 43 r bang;
-#X obj 309 -130 r bang;
-#X obj 258 -43 cnv 15 55 26 empty empty empty 20 12 0 14 -258113 -66577
+#X obj 56 119 r bang;
+#X obj 352 -54 r bang;
+#X obj 301 33 cnv 15 55 26 empty empty empty 20 12 0 14 -258113 -66577
 0;
-#X floatatom 263 -38 5 0 0 0 - - -;
-#X obj 5 85 cnv 15 55 26 empty empty empty 20 12 0 14 -258113 -66577
+#X floatatom 306 38 5 0 0 0 - - -;
+#X obj 48 161 cnv 15 55 26 empty empty empty 20 12 0 14 -258113 -66577
 0;
-#X floatatom 13 89 5 0 0 0 - - -;
-#X text 59 87 <<-- radius R1;
+#X floatatom 56 165 5 0 0 0 - - -;
+#X text 102 163 <<-- radius R1;
 #X text -167 -101 <<-- % CPU LOAD;
 #X connect 1 0 2 0;
 #X connect 2 0 1 0;
